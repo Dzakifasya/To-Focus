@@ -1,0 +1,242 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}About Us - To-Focus{% endblock %}
+
+{% block content %}
+<div class="container" style="max-width: 1200px;">
+
+    <!-- HEADER SECTION -->
+    <div style="text-align: center; margin-bottom: 3rem; padding: 2rem 0;">
+        <img src="{% static 'todolist/img/logo.png' %}" alt="Logo To-Focus"
+            style="width: 120px; height: 120px; border-radius: 25px; box-shadow: 0 10px 30px rgba(2, 90, 170, 0.25); margin-bottom: 1.5rem;">
+
+        <h1 style="color: var(--primary-blue); font-size: 2.5rem; font-weight: 700; margin-bottom: 0.5rem;">
+            About To-Focus
+        </h1>
+        <p style="color: var(--text-gray); font-size: 1.1rem; max-width: 700px; margin: 0 auto;">
+            Aplikasi manajemen tugas modern untuk meningkatkan produktivitas Anda
+        </p>
+    </div>
+
+    <!-- TENTANG APLIKASI -->
+    <div class="card" style="margin-bottom: 3rem; border: none; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
+        <div
+            style="background: linear-gradient(135deg, var(--primary-blue) 0%, var(--secondary-blue) 100%); padding: 2rem; border-radius: 12px 12px 0 0; text-align: center;">
+            <h2 style="color: white; font-size: 1.75rem; font-weight: 700; margin: 0;">
+                🎯 Tentang Aplikasi
+            </h2>
+        </div>
+
+        <div style="padding: 2rem;">
+            <p
+                style="color: var(--text-dark); line-height: 1.8; font-size: 1.05rem; text-align: center; margin-bottom: 0;">
+                <strong style="color: var(--primary-blue);">To-Focus</strong> adalah aplikasi manajemen tugas yang
+                dirancang khusus untuk membantu mahasiswa
+                dan profesional mengelola aktivitas harian mereka dengan lebih efisien dan terorganisir. Dengan
+                antarmuka yang intuitif dan fitur-fitur canggih,
+                To-Focus membantu Anda tetap fokus pada apa yang penting.
+            </p>
+        </div>
+    </div>
+
+    <!-- FITUR UTAMA -->
+    <div class="card" style="margin-bottom: 3rem; border: none; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
+        <div style="padding: 2rem;">
+            <h2
+                style="color: var(--primary-blue); font-size: 1.75rem; font-weight: 700; text-align: center; margin-bottom: 2rem;">
+                ⚡ Fitur Utama
+            </h2>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem;">
+                <div
+                    style="background: linear-gradient(135deg, #f5f7fa 0%, #e3f2fd 100%); padding: 1.5rem; border-radius: 12px; border-left: 4px solid var(--primary-blue); transition: transform 0.3s ease;">
+                    <div style="font-size: 2.5rem; margin-bottom: 0.75rem;">📝</div>
+                    <h3 style="color: var(--primary-blue); font-size: 1.1rem; font-weight: 600; margin-bottom: 0.5rem;">
+                        Multiple Todolist</h3>
+                    <p style="color: var(--text-dark); font-size: 0.95rem; margin: 0;">Buat dan kelola berbagai todolist
+                        sesuai kebutuhan</p>
+                </div>
+
+                <div
+                    style="background: linear-gradient(135deg, #f5f7fa 0%, #e3f2fd 100%); padding: 1.5rem; border-radius: 12px; border-left: 4px solid var(--primary-blue); transition: transform 0.3s ease;">
+                    <div style="font-size: 2.5rem; margin-bottom: 0.75rem;">✅</div>
+                    <h3 style="color: var(--primary-blue); font-size: 1.1rem; font-weight: 600; margin-bottom: 0.5rem;">
+                        Task Management</h3>
+                    <p style="color: var(--text-dark); font-size: 0.95rem; margin: 0;">Tandai dan kelola task yang sudah
+                        selesai</p>
+                </div>
+
+                <div
+                    style="background: linear-gradient(135deg, #f5f7fa 0%, #e3f2fd 100%); padding: 1.5rem; border-radius: 12px; border-left: 4px solid var(--primary-blue); transition: transform 0.3s ease;">
+                    <div style="font-size: 2.5rem; margin-bottom: 0.75rem;">📌</div>
+                    <h3 style="color: var(--primary-blue); font-size: 1.1rem; font-weight: 600; margin-bottom: 0.5rem;">
+                        Pin Important</h3>
+                    <p style="color: var(--text-dark); font-size: 0.95rem; margin: 0;">Pin todolist penting di bagian
+                        atas</p>
+                </div>
+
+                <div
+                    style="background: linear-gradient(135deg, #f5f7fa 0%, #e3f2fd 100%); padding: 1.5rem; border-radius: 12px; border-left: 4px solid var(--primary-blue); transition: transform 0.3s ease;">
+                    <div style="font-size: 2.5rem; margin-bottom: 0.75rem;">🔄</div>
+                    <h3 style="color: var(--primary-blue); font-size: 1.1rem; font-weight: 600; margin-bottom: 0.5rem;">
+                        Drag & Drop</h3>
+                    <p style="color: var(--text-dark); font-size: 0.95rem; margin: 0;">Atur urutan task dengan mudah</p>
+                </div>
+
+                <div
+                    style="background: linear-gradient(135deg, #f5f7fa 0%, #e3f2fd 100%); padding: 1.5rem; border-radius: 12px; border-left: 4px solid var(--primary-blue); transition: transform 0.3s ease;">
+                    <div style="font-size: 2.5rem; margin-bottom: 0.75rem;">📱</div>
+                    <h3 style="color: var(--primary-blue); font-size: 1.1rem; font-weight: 600; margin-bottom: 0.5rem;">
+                        Responsive Design</h3>
+                    <p style="color: var(--text-dark); font-size: 0.95rem; margin: 0;">Akses dari berbagai perangkat</p>
+                </div>
+
+                <div
+                    style="background: linear-gradient(135deg, #f5f7fa 0%, #e3f2fd 100%); padding: 1.5rem; border-radius: 12px; border-left: 4px solid var(--primary-blue); transition: transform 0.3s ease;">
+                    <div style="font-size: 2.5rem; margin-bottom: 0.75rem;">⚡</div>
+                    <h3 style="color: var(--primary-blue); font-size: 1.1rem; font-weight: 600; margin-bottom: 0.5rem;">
+                        Real-time Update</h3>
+                    <p style="color: var(--text-dark); font-size: 0.95rem; margin: 0;">Perubahan tersimpan secara
+                        otomatis</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- TIM PENGEMBANG -->
+    <div class="card"
+        style="margin-bottom: 3rem; border: none; box-shadow: 0 4px 20px rgba(0,0,0,0.08); overflow: hidden;">
+        <div
+            style="background: linear-gradient(135deg, var(--primary-blue) 0%, var(--secondary-blue) 100%); padding: 2rem; text-align: center;">
+            <h2 style="color: white; font-size: 1.75rem; font-weight: 700; margin: 0;">
+                👥 Tim Pengembang
+            </h2>
+            <p style="color: rgba(255,255,255,0.9); margin-top: 0.5rem; margin-bottom: 0;">Kenali tim di balik To-Focus
+            </p>
+        </div>
+
+        <div style="padding: 3rem 2rem;">
+            <div style="display: flex; justify-content: center; align-items: flex-start; gap: 2rem; flex-wrap: wrap;">
+
+                <!-- MEMBER 1 -->
+                <div style="text-align: center; flex: 0 0 180px;">
+                    <div
+                        style="width: 150px; height: 150px; border-radius: 50%; background: linear-gradient(135deg, #e0e7ff 0%, #c7d2fe 100%); margin: 0 auto 1rem; display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 20px rgba(2, 90, 170, 0.15); border: 4px solid white;">
+                        <img src="{% static 'todolist/img/lulu.jpeg' %}"
+                            style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
+                    </div>
+                    <h3 style="color: var(--text-dark); font-size: 1rem; font-weight: 600; margin-bottom: 0.25rem;">
+                        Lu'luul Mukaromah</h3>
+                    <p style="color: var(--text-gray); font-size: 0.9rem; margin: 0;">0110225105</p>
+                </div>
+
+                <!-- MEMBER 2 -->
+                <div style="text-align: center; flex: 0 0 180px;">
+                    <div
+                        style="width: 150px; height: 150px; border-radius: 50%; background: linear-gradient(135deg, #e0e7ff 0%, #c7d2fe 100%); margin: 0 auto 1rem; display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 20px rgba(2, 90, 170, 0.15); border: 4px solid white;">
+                        <img src="{% static 'todolist/img/nica.jpeg' %}"
+                            style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
+                    </div>
+                    <h3 style="color: var(--text-dark); font-size: 1rem; font-weight: 600; margin-bottom: 0.25rem;">
+                        Nicha Amelia Srg</h3>
+                    <p style="color: var(--text-gray); font-size: 0.9rem; margin: 0;">0110225160</p>
+                </div>
+
+                <!-- LEADER - DZAKI FASYA (TENGAH) -->
+                <div style="text-align: center; flex: 0 0 200px;">
+                    <div style="position: relative;">
+                        <div
+                            style="width: 180px; height: 180px; border-radius: 50%; background: linear-gradient(135deg, var(--primary-blue) 0%, var(--secondary-blue) 100%); margin: 0 auto 1rem; display: flex; align-items: center; justify-content: center; box-shadow: 0 10px 30px rgba(2, 90, 170, 0.3); border: 5px solid white; position: relative;">
+                            <img src="{% static 'todolist/img/Dzaki.jpeg' %}"
+                                style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
+                            <div
+                                style="position: absolute; top: -10px; right: -10px; background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%); width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 12px rgba(251, 191, 36, 0.5); border: 3px solid white;">
+                                <span style="font-size: 1.5rem;">⭐</span>
+                            </div>
+                        </div>
+                    </div>
+                    <h3
+                        style="color: var(--primary-blue); font-size: 1.15rem; font-weight: 700; margin-bottom: 0.25rem;">
+                        Dzaki Fasya</h3>
+                    <p style="color: var(--text-gray); font-size: 0.95rem; margin-bottom: 0.5rem;">0110225165</p>
+                    <span
+                        style="display: inline-block; background: linear-gradient(135deg, var(--primary-blue) 0%, var(--secondary-blue) 100%); color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem; font-weight: 600;">Team
+                        Leader</span>
+                </div>
+
+                <!-- MEMBER 4 -->
+                <div style="text-align: center; flex: 0 0 180px;">
+                    <div
+                        style="width: 150px; height: 150px; border-radius: 50%; background: linear-gradient(135deg, #e0e7ff 0%, #c7d2fe 100%); margin: 0 auto 1rem; display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 20px rgba(2, 90, 170, 0.15); border: 4px solid white;">
+                        <img src="{% static 'todolist/img/sandi.jpeg' %}"
+                                style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
+                    </div>
+                    <h3 style="color: var(--text-dark); font-size: 1rem; font-weight: 600; margin-bottom: 0.25rem;">
+                        Sandi Kurniawan</h3>
+                    <p style="color: var(--text-gray); font-size: 0.9rem; margin: 0;">0110225033</p>
+                </div>
+
+                <!-- MEMBER 5 -->
+                <div style="text-align: center; flex: 0 0 180px;">
+                    <div
+                        style="width: 150px; height: 150px; border-radius: 50%; background: linear-gradient(135deg, #e0e7ff 0%, #c7d2fe 100%); margin: 0 auto 1rem; display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 20px rgba(2, 90, 170, 0.15); border: 4px solid white;">
+                        <img src="{% static 'todolist/img/Fathir.jpeg' %}"
+                                style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
+                    </div>
+                    <h3 style="color: var(--text-dark); font-size: 1rem; font-weight: 600; margin-bottom: 0.25rem;">
+                        M. Fathir Lubis</h3>
+                    <p style="color: var(--text-gray); font-size: 0.9rem; margin: 0;">0110225005</p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- TEKNOLOGI -->
+    <div class="card"
+        style="margin-bottom: 3rem; border: none; box-shadow: 0 4px 20px rgba(0,0,0,0.08); overflow: hidden;">
+        <div style="background: linear-gradient(135deg, #1e293b 0%, #334155 100%); padding: 2rem; text-align: center;">
+            <h2 style="color: white; font-size: 1.75rem; font-weight: 700; margin-bottom: 1rem;">
+                🛠️ Teknologi yang Digunakan
+            </h2>
+            <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                <span
+                    style="background: rgba(255, 255, 255, 0.15); backdrop-filter: blur(10px); padding: 0.6rem 1.25rem; border-radius: 25px; font-weight: 600; color: white; border: 1px solid rgba(255,255,255,0.2);">
+                    Django Framework
+                </span>
+                <span
+                    style="background: rgba(255, 255, 255, 0.15); backdrop-filter: blur(10px); padding: 0.6rem 1.25rem; border-radius: 25px; font-weight: 600; color: white; border: 1px solid rgba(255,255,255,0.2);">
+                    Bootstrap 5
+                </span>
+                <span
+                    style="background: rgba(255, 255, 255, 0.15); backdrop-filter: blur(10px); padding: 0.6rem 1.25rem; border-radius: 25px; font-weight: 600; color: white; border: 1px solid rgba(255,255,255,0.2);">
+                    JavaScript & AJAX
+                </span>
+                <span
+                    style="background: rgba(255, 255, 255, 0.15); backdrop-filter: blur(10px); padding: 0.6rem 1.25rem; border-radius: 25px; font-weight: 600; color: white; border: 1px solid rgba(255,255,255,0.2);">
+                    SortableJS
+                </span>
+                <span
+                    style="background: rgba(255, 255, 255, 0.15); backdrop-filter: blur(10px); padding: 0.6rem 1.25rem; border-radius: 25px; font-weight: 600; color: white; border: 1px solid rgba(255,255,255,0.2);">
+                    SQLite Database
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <!-- CTA -->
+    <div style="text-align: center; margin-bottom: 3rem;">
+        <p style="color: var(--text-gray); font-size: 1.05rem; margin-bottom: 1.5rem;">
+            Dikembangkan dengan ❤️ untuk meningkatkan produktivitas Anda
+        </p>
+        <a href="{% url 'home' %}"
+            style="display: inline-block; padding: 1rem 2.5rem; background: linear-gradient(135deg, var(--primary-blue) 0%, var(--secondary-blue) 100%); color: white; text-decoration: none; border-radius: 50px; font-weight: 600; font-size: 1.05rem; box-shadow: 0 6px 20px rgba(2, 90, 170, 0.3); transition: all 0.3s ease;"
+            onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 8px 25px rgba(2, 90, 170, 0.4)';"
+            onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 6px 20px rgba(2, 90, 170, 0.3)';">
+            🏠 Kembali ke Home
+        </a>
+    </div>
+
+</div>
+{% endblock %}

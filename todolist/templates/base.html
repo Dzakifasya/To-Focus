@@ -1,0 +1,119 @@
+{% load static %}
+<!doctype html>
+<html lang="id">
+
+<head>
+  <meta charset="utf-8">
+  <title>{% block title %}Todolist App{% endblock %}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Bootstrap -->
+  <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="{% static 'todolist/css/style.css' %}">
+
+  <!-- Additional Google Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@600;700&display=swap"
+    rel="stylesheet">
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg navbar-custom shadow-sm">
+  <div class="container" style="max-width: 1400px;">
+    <a class="navbar-brand d-flex align-items-center" href="{% url 'home' %}">
+      <img src="{% static 'todolist/img/logo.png' %}" alt="Logo"
+        style="width: 32px; height: 32px; margin-right: 10px;">
+      <span class="brand-text">To-Focus</span>
+    </a>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link {% if request.resolver_match.url_name == 'home' %}active{% endif %}"
+            href="{% url 'home' %}">
+            <span class="nav-icon">🏠</span> Home
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link {% if request.resolver_match.url_name == 'about' %}active{% endif %}"
+            href="{% url 'about' %}">
+            <span class="nav-icon">ℹ️</span> About Us
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link {% if request.resolver_match.url_name == 'gallery' %}active{% endif %}"
+            href="{% url 'gallery' %}">
+            <span class="nav-icon">🖼️</span> Gallery
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  <!-- CONTENT -->
+  <div class="main-content">
+    {% block content %}{% endblock %}
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer mt-5">
+    <div class="container text-center">
+      <p class="mb-0">&copy; 2025 Todolist App. Made with ❤️</p>
+    </div>
+  </footer>
+
+  <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+  <!-- Tambahkan script ini sebelum closing tag </body> di base.html -->
+  <script>
+    // Fix scroll position on page load
+    if ('scrollRestoration' in history) {
+      history.scrollRestoration = 'manual';
+    }
+
+    // Reset scroll to top on page load
+    window.addEventListener('beforeunload', function () {
+      window.scrollTo(0, 0);
+    });
+
+    // Navbar Scroll Effect - Simple
+    let ticking = false;
+
+    window.addEventListener('scroll', function () {
+      if (!ticking) {
+        window.requestAnimationFrame(function () {
+          const navbar = document.querySelector('.navbar-custom');
+          if (navbar) {
+            if (window.scrollY > 50) {
+              navbar.classList.add('scrolled');
+            } else {
+              navbar.classList.remove('scrolled');
+            }
+          }
+          ticking = false;
+        });
+        ticking = true;
+      }
+    }, { passive: true });
+
+    // Ensure page starts at top
+    window.onload = function () {
+      setTimeout(function () {
+        window.scrollTo(0, 0);
+      }, 10);
+    };
+  </script>
+</body>
+
+</html>

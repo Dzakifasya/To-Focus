@@ -1,0 +1,29 @@
+{
+  "name": "todolist-desktop",
+  "version": "1.0.0",
+  "description": "Todolist Desktop App",
+  "author": "Dzaki",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-builder"
+  },
+  "devDependencies": {
+    "electron": "^30.0.0",
+    "electron-builder": "^26.0.12"
+  },
+  "build": {
+    "appId": "com.dzaki.todolist",
+    "productName": "Todolist App",
+    "win": {
+      "target": "nsis",
+      "icon": "icon.ico"
+    },
+    "extraResources": [
+      {
+        "from": "backend/run_django.exe",
+        "to": "backend/run_django.exe"
+      }
+    ]
+  }
+}

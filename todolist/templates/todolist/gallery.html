@@ -1,0 +1,245 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Gallery - To-Focus{% endblock %}
+
+{% block content %}
+<div class="container" style="max-width: 1200px;">
+    
+    <!-- HEADER SECTION -->
+    <div style="text-align: center; margin-bottom: 3rem; padding: 2rem 0;">
+        <div style="display: inline-block; position: relative; margin-bottom: 1.5rem;">
+            <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 150px; height: 150px; background: linear-gradient(135deg, rgba(2, 90, 170, 0.1) 0%, rgba(3, 112, 201, 0.1) 100%); border-radius: 50%; filter: blur(30px);"></div>
+            <img src="{% static 'todolist/img/logo.png' %}" 
+                 alt="Logo To-Focus" 
+                 style="width: 100px; height: 100px; border-radius: 20px; box-shadow: 0 10px 30px rgba(2, 90, 170, 0.25); position: relative; z-index: 1; border: 4px solid white;">
+        </div>
+        
+        <h1 style="color: var(--primary-blue); font-size: 2.5rem; font-weight: 700; margin-bottom: 0.5rem;">
+            Gallery
+        </h1>
+        <p style="color: var(--text-gray); font-size: 1.1rem; max-width: 600px; margin: 0 auto;">
+            Koleksi aset visual dan brand identity To-Focus
+        </p>
+    </div>
+
+    <!-- LOGO SHOWCASE -->
+    <div class="card" style="margin-bottom: 3rem; border: none; box-shadow: 0 4px 20px rgba(0,0,0,0.08); overflow: hidden;">
+        <div style="background: linear-gradient(135deg, var(--primary-blue) 0%, var(--secondary-blue) 100%); padding: 2rem; text-align: center;">
+            <h2 style="color: white; font-size: 1.75rem; font-weight: 700; margin: 0;">
+                🎨 Brand Assets
+            </h2>
+        </div>
+        
+        <div style="padding: 3rem 2rem;">
+            <div class="row g-4">
+                <!-- Logo PNG -->
+                <div class="col-md-6">
+                    <div style="background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%); padding: 3rem 2rem; border-radius: 16px; text-align: center; border: 2px solid rgba(2, 90, 170, 0.1); transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); position: relative; overflow: hidden; height: 100%;">
+                        
+                        <!-- Decorative circle -->
+                        <div style="position: absolute; top: -50px; right: -50px; width: 150px; height: 150px; background: linear-gradient(135deg, rgba(2, 90, 170, 0.05) 0%, rgba(3, 112, 201, 0.05) 100%); border-radius: 50%;"></div>
+                        
+                        <div style="background: white; padding: 2.5rem; border-radius: 16px; margin-bottom: 1.5rem; display: inline-block; box-shadow: 0 10px 30px rgba(2, 90, 170, 0.1); position: relative; z-index: 1;">
+                            <img src="{% static 'todolist/img/logo.png' %}" 
+                                 class="img-fluid" 
+                                 alt="Logo PNG"
+                                 style="max-width: 180px; height: auto;">
+                        </div>
+                        
+                        <h3 style="color: var(--primary-blue); font-weight: 700; margin-bottom: 0.5rem; font-size: 1.3rem;">
+                            Logo PNG
+                        </h3>
+                        <p style="color: var(--text-gray); font-size: 0.95rem; margin: 0;">
+                            High Resolution • Transparent Background
+                        </p>
+                        
+                        <div style="margin-top: 1.5rem; display: flex; gap: 0.5rem; justify-content: center;">
+                            <span style="background: rgba(2, 90, 170, 0.1); color: var(--primary-blue); padding: 0.375rem 0.875rem; border-radius: 20px; font-size: 0.8rem; font-weight: 600;">PNG</span>
+                            <span style="background: rgba(2, 90, 170, 0.1); color: var(--primary-blue); padding: 0.375rem 0.875rem; border-radius: 20px; font-size: 0.8rem; font-weight: 600;">512x512</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Logo ICO -->
+                <div class="col-md-6">
+                    <div style="background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%); padding: 3rem 2rem; border-radius: 16px; text-align: center; border: 2px solid rgba(2, 90, 170, 0.1); transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); position: relative; overflow: hidden; height: 100%;">
+                        
+                        <!-- Decorative circle -->
+                        <div style="position: absolute; top: -50px; left: -50px; width: 150px; height: 150px; background: linear-gradient(135deg, rgba(2, 90, 170, 0.05) 0%, rgba(3, 112, 201, 0.05) 100%); border-radius: 50%;"></div>
+                        
+                        <div style="background: white; padding: 2.5rem; border-radius: 16px; margin-bottom: 1.5rem; display: inline-block; box-shadow: 0 10px 30px rgba(2, 90, 170, 0.1); position: relative; z-index: 1;">
+                            <img src="{% static 'todolist/img/logo.ico' %}" 
+                                 class="img-fluid" 
+                                 alt="Logo ICO"
+                                 style="max-width: 180px; height: auto;">
+                        </div>
+                        
+                        <h3 style="color: var(--primary-blue); font-weight: 700; margin-bottom: 0.5rem; font-size: 1.3rem;">
+                            Favicon ICO
+                        </h3>
+                        <p style="color: var(--text-gray); font-size: 0.95rem; margin: 0;">
+                            Browser Icon • Multi-size Support
+                        </p>
+                        
+                        <div style="margin-top: 1.5rem; display: flex; gap: 0.5rem; justify-content: center;">
+                            <span style="background: rgba(2, 90, 170, 0.1); color: var(--primary-blue); padding: 0.375rem 0.875rem; border-radius: 20px; font-size: 0.8rem; font-weight: 600;">ICO</span>
+                            <span style="background: rgba(2, 90, 170, 0.1); color: var(--primary-blue); padding: 0.375rem 0.875rem; border-radius: 20px; font-size: 0.8rem; font-weight: 600;">16-256px</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- COLOR PALETTE -->
+    <div class="card" style="margin-bottom: 3rem; border: none; box-shadow: 0 4px 20px rgba(0,0,0,0.08); overflow: hidden;">
+        <div style="padding: 3rem 2rem;">
+            <h2 style="color: var(--primary-blue); text-align: center; font-size: 1.75rem; font-weight: 700; margin-bottom: 1rem;">
+                🎨 Color Palette
+            </h2>
+            <p style="text-align: center; color: var(--text-gray); margin-bottom: 2.5rem;">
+                Skema warna brand yang konsisten
+            </p>
+            
+            <div class="row g-4">
+                <div class="col-md-3 col-6">
+                    <div style="background: white; padding: 1.5rem; border-radius: 12px; box-shadow: 0 4px 16px rgba(0,0,0,0.06); transition: all 0.3s ease; border: 2px solid rgba(2, 90, 170, 0.1);">
+                        <div style="background: #025aaa; height: 120px; border-radius: 10px; margin-bottom: 1rem; box-shadow: 0 8px 20px rgba(2, 90, 170, 0.3); position: relative; overflow: hidden;">
+                            <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: white; font-weight: 700; font-size: 0.9rem; text-shadow: 0 2px 4px rgba(0,0,0,0.2);">Primary</div>
+                        </div>
+                        <h4 style="color: var(--text-dark); font-weight: 600; margin-bottom: 0.5rem; font-size: 1rem;">Primary Blue</h4>
+                        <code style="background: #f8f9fa; padding: 0.5rem 0.75rem; border-radius: 6px; font-size: 0.85rem; display: block; text-align: center; border: 1px solid #dee2e6;">#025aaa</code>
+                        <p style="color: var(--text-gray); font-size: 0.8rem; margin-top: 0.5rem; margin-bottom: 0;">RGB: 2, 90, 170</p>
+                    </div>
+                </div>
+                
+                <div class="col-md-3 col-6">
+                    <div style="background: white; padding: 1.5rem; border-radius: 12px; box-shadow: 0 4px 16px rgba(0,0,0,0.06); transition: all 0.3s ease; border: 2px solid rgba(3, 112, 201, 0.1);">
+                        <div style="background: #0370c9; height: 120px; border-radius: 10px; margin-bottom: 1rem; box-shadow: 0 8px 20px rgba(3, 112, 201, 0.3); position: relative; overflow: hidden;">
+                            <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: white; font-weight: 700; font-size: 0.9rem; text-shadow: 0 2px 4px rgba(0,0,0,0.2);">Secondary</div>
+                        </div>
+                        <h4 style="color: var(--text-dark); font-weight: 600; margin-bottom: 0.5rem; font-size: 1rem;">Secondary Blue</h4>
+                        <code style="background: #f8f9fa; padding: 0.5rem 0.75rem; border-radius: 6px; font-size: 0.85rem; display: block; text-align: center; border: 1px solid #dee2e6;">#0370c9</code>
+                        <p style="color: var(--text-gray); font-size: 0.8rem; margin-top: 0.5rem; margin-bottom: 0;">RGB: 3, 112, 201</p>
+                    </div>
+                </div>
+                
+                <div class="col-md-3 col-6">
+                    <div style="background: white; padding: 1.5rem; border-radius: 12px; box-shadow: 0 4px 16px rgba(0,0,0,0.06); transition: all 0.3s ease; border: 2px solid rgba(2, 90, 170, 0.1);">
+                        <div style="background: #e3f2fd; height: 120px; border-radius: 10px; margin-bottom: 1rem; box-shadow: 0 4px 12px rgba(2, 90, 170, 0.15); border: 2px solid #025aaa; position: relative; overflow: hidden;">
+                            <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: #025aaa; font-weight: 700; font-size: 0.9rem;">Light</div>
+                        </div>
+                        <h4 style="color: var(--text-dark); font-weight: 600; margin-bottom: 0.5rem; font-size: 1rem;">Light Blue</h4>
+                        <code style="background: #f8f9fa; padding: 0.5rem 0.75rem; border-radius: 6px; font-size: 0.85rem; display: block; text-align: center; border: 1px solid #dee2e6;">#e3f2fd</code>
+                        <p style="color: var(--text-gray); font-size: 0.8rem; margin-top: 0.5rem; margin-bottom: 0;">RGB: 227, 242, 253</p>
+                    </div>
+                </div>
+                
+                <div class="col-md-3 col-6">
+                    <div style="background: white; padding: 1.5rem; border-radius: 12px; box-shadow: 0 4px 16px rgba(0,0,0,0.06); transition: all 0.3s ease; border: 2px solid rgba(2, 90, 170, 0.1);">
+                        <div style="background: #ffffff; height: 120px; border-radius: 10px; margin-bottom: 1rem; box-shadow: 0 4px 12px rgba(0,0,0,0.1); border: 2px solid #dee2e6; position: relative; overflow: hidden;">
+                            <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: #495057; font-weight: 700; font-size: 0.9rem;">Base</div>
+                        </div>
+                        <h4 style="color: var(--text-dark); font-weight: 600; margin-bottom: 0.5rem; font-size: 1rem;">White</h4>
+                        <code style="background: #f8f9fa; padding: 0.5rem 0.75rem; border-radius: 6px; font-size: 0.85rem; display: block; text-align: center; border: 1px solid #dee2e6;">#ffffff</code>
+                        <p style="color: var(--text-gray); font-size: 0.8rem; margin-top: 0.5rem; margin-bottom: 0;">RGB: 255, 255, 255</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- TYPOGRAPHY -->
+    <div class="card" style="margin-bottom: 3rem; border: none; box-shadow: 0 4px 20px rgba(0,0,0,0.08); overflow: hidden;">
+        <div style="padding: 3rem 2rem;">
+            <h2 style="color: var(--primary-blue); text-align: center; font-size: 1.75rem; font-weight: 700; margin-bottom: 1rem;">
+                ✍️ Typography
+            </h2>
+            <p style="text-align: center; color: var(--text-gray); margin-bottom: 2.5rem;">
+                Font family yang digunakan dalam aplikasi
+            </p>
+            
+            <div style="background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%); padding: 3rem; border-radius: 16px; border: 2px solid rgba(2, 90, 170, 0.1);">
+                <div style="margin-bottom: 2rem;">
+                    <span style="display: inline-block; background: var(--primary-blue); color: white; padding: 0.375rem 1rem; border-radius: 20px; font-size: 0.8rem; font-weight: 600; margin-bottom: 1rem;">Font Family: Inter</span>
+                    <h1 style="font-family: 'Inter', sans-serif; font-size: 2.5rem; font-weight: 700; color: var(--primary-blue); margin-bottom: 0.5rem;">
+                        The Quick Brown Fox
+                    </h1>
+                    <p style="color: var(--text-gray); font-size: 0.9rem; margin: 0;">Display / Heading - Bold 700</p>
+                </div>
+                
+                <div style="margin-bottom: 2rem;">
+                    <h2 style="font-family: 'Inter', sans-serif; font-size: 1.75rem; font-weight: 600; color: var(--text-dark); margin-bottom: 0.5rem;">
+                        Jumps Over The Lazy Dog
+                    </h2>
+                    <p style="color: var(--text-gray); font-size: 0.9rem; margin: 0;">Subheading - SemiBold 600</p>
+                </div>
+                
+                <div style="margin-bottom: 2rem;">
+                    <p style="font-family: 'Inter', sans-serif; font-size: 1.125rem; font-weight: 500; color: var(--text-dark); margin-bottom: 0.5rem;">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    </p>
+                    <p style="color: var(--text-gray); font-size: 0.9rem; margin: 0;">Body Large - Medium 500</p>
+                </div>
+                
+                <div>
+                    <p style="font-family: 'Inter', sans-serif; font-size: 1rem; font-weight: 400; color: var(--text-dark); margin-bottom: 0.5rem; line-height: 1.6;">
+                        Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis.
+                    </p>
+                    <p style="color: var(--text-gray); font-size: 0.9rem; margin: 0;">Body Regular - Regular 400</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- DESIGN PRINCIPLES -->
+    <div class="card" style="margin-bottom: 3rem; border: none; box-shadow: 0 4px 20px rgba(0,0,0,0.08); overflow: hidden;">
+        <div style="background: linear-gradient(135deg, #1e293b 0%, #334155 100%); padding: 3rem 2rem;">
+            <h2 style="color: white; text-align: center; font-size: 1.75rem; font-weight: 700; margin-bottom: 2rem;">
+                ⚡ Design Principles
+            </h2>
+            
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div style="text-align: center; padding: 1.5rem;">
+                        <div style="font-size: 3rem; margin-bottom: 1rem;">🎯</div>
+                        <h3 style="color: white; font-size: 1.1rem; font-weight: 600; margin-bottom: 0.75rem;">Simple & Clean</h3>
+                        <p style="color: rgba(255,255,255,0.8); font-size: 0.9rem; margin: 0;">Antarmuka yang bersih dan mudah dipahami</p>
+                    </div>
+                </div>
+                
+                <div class="col-md-4">
+                    <div style="text-align: center; padding: 1.5rem;">
+                        <div style="font-size: 3rem; margin-bottom: 1rem;">✨</div>
+                        <h3 style="color: white; font-size: 1.1rem; font-weight: 600; margin-bottom: 0.75rem;">Modern & Elegant</h3>
+                        <p style="color: rgba(255,255,255,0.8); font-size: 0.9rem; margin: 0;">Desain kontemporer dengan sentuhan elegan</p>
+                    </div>
+                </div>
+                
+                <div class="col-md-4">
+                    <div style="text-align: center; padding: 1.5rem;">
+                        <div style="font-size: 3rem; margin-bottom: 1rem;">📱</div>
+                        <h3 style="color: white; font-size: 1.1rem; font-weight: 600; margin-bottom: 0.75rem;">Responsive</h3>
+                        <p style="color: rgba(255,255,255,0.8); font-size: 0.9rem; margin: 0;">Adaptif di semua ukuran layar</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CTA -->
+    <div style="text-align: center; margin-bottom: 3rem;">
+        <p style="color: var(--text-gray); font-size: 1.05rem; margin-bottom: 1.5rem;">
+            Brand identity yang konsisten untuk pengalaman terbaik
+        </p>
+        <a href="{% url 'home' %}" 
+           style="display: inline-block; padding: 1rem 2.5rem; background: linear-gradient(135deg, var(--primary-blue) 0%, var(--secondary-blue) 100%); color: white; text-decoration: none; border-radius: 50px; font-weight: 600; font-size: 1.05rem; box-shadow: 0 6px 20px rgba(2, 90, 170, 0.3); transition: all 0.3s ease;"
+           onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 8px 25px rgba(2, 90, 170, 0.4)';"
+           onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 6px 20px rgba(2, 90, 170, 0.3)';">
+            🏠 Kembali ke Home
+        </a>
+    </div>
+
+</div>
+{% endblock %}
