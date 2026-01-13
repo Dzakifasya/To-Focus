@@ -1,0 +1,249 @@
+{% load static %}
+<!doctype html>
+<html lang="id">
+
+<head>
+  <meta charset="utf-8">
+  <title>{% block title %}Todolist App{% endblock %}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Bootstrap CSS -->
+  <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="{% static 'todolist/css/style.css' %}">
+
+  <style>
+    /* NAVBAR OVERRIDE - CLEAN & SIMPLE */
+    .navbar-custom {
+      background: linear-gradient(135deg, #025aaa 0%, #0370c9 100%);
+      padding: 1rem 0;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      width: 100%;
+    }
+
+    .navbar-custom .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      width: 100%;
+      padding: 0 1.5rem;
+    }
+
+    .navbar-custom .navbar-brand {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #ffffff !important;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      text-decoration: none !important;
+    }
+
+    .navbar-custom .navbar-brand:hover {
+      text-decoration: none !important;
+    }
+
+    .navbar-custom .navbar-brand img {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+    }
+
+    .navbar-custom .navbar-nav {
+      gap: 0.5rem;
+    }
+
+    .navbar-custom .nav-link {
+      color: rgba(255, 255, 255, 0.95) !important;
+      font-weight: 500;
+      font-size: 0.95rem;
+      padding: 0.5rem 1rem !important;
+      border-radius: 6px;
+      transition: background-color 0.2s ease;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      text-decoration: none !important;
+    }
+
+    .navbar-custom .nav-link:hover {
+      background-color: rgba(255, 255, 255, 0.15);
+    }
+
+    .navbar-custom .nav-link.active {
+      background-color: rgba(255, 255, 255, 0.2);
+      font-weight: 600;
+    }
+
+    .navbar-custom .nav-icon {
+      font-size: 1.1rem;
+    }
+
+    /* Hamburger button styling */
+    .navbar-toggler {
+      border-color: rgba(255, 255, 255, 0.3);
+      padding: 0.5rem 0.75rem;
+    }
+
+    .navbar-toggler:focus {
+      box-shadow: 0 0 0 0.2rem rgba(255, 255, 255, 0.25);
+    }
+
+    .navbar-toggler-icon {
+      background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 0.95%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+    }
+
+    /* Body & Layout */
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      background: linear-gradient(135deg, #f5f7fa 0%, #e3f2fd 100%);
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    .main-content {
+      flex: 1;
+      padding: 2rem 1rem;
+      width: 100%;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .footer {
+      background: linear-gradient(135deg, #025aaa 0%, #0370c9 100%);
+      color: white;
+      padding: 1.5rem 0;
+      margin-top: auto;
+      box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.1);
+      width: 100%;
+    }
+
+    .footer .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      width: 100%;
+      padding: 0 1.5rem;
+    }
+
+    /* Mobile Responsive - hanya tampil di layar sangat kecil */
+    @media (max-width: 767px) {
+      .navbar-custom .navbar-collapse {
+        background: rgba(1, 64, 128, 0.95);
+        padding: 1rem;
+        border-radius: 8px;
+        margin-top: 1rem;
+      }
+
+      .navbar-custom .navbar-nav {
+        gap: 0.25rem;
+      }
+
+      .navbar-custom .nav-link {
+        padding: 0.75rem 1rem !important;
+      }
+
+      .main-content {
+        padding: 1rem 0.75rem;
+      }
+
+      .navbar-custom .container,
+      .footer .container {
+        padding: 0 1rem;
+      }
+    }
+
+    /* Sembunyikan hamburger di tablet & desktop */
+    @media (min-width: 768px) {
+      .navbar-toggler {
+        display: none !important;
+      }
+      
+      .navbar-collapse {
+        display: flex !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVBAR - CLEAN BOOTSTRAP STYLE -->
+  <nav class="navbar navbar-expand-md navbar-custom sticky-top">
+    <div class="container">
+      <!-- Brand -->
+      <a class="navbar-brand" href="{% url 'home' %}">
+        <img src="{% static 'todolist/img/logo.png' %}" alt="To-Focus Logo">
+        <span>To-Focus</span>
+      </a>
+
+      <!-- Hamburger Button (Mobile Only) -->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" 
+              aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <!-- Nav Links -->
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link {% if request.resolver_match.url_name == 'home' %}active{% endif %}" 
+               href="{% url 'home' %}">
+              <span class="nav-icon">🏠</span> Home
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link {% if request.resolver_match.url_name == 'about' %}active{% endif %}" 
+               href="{% url 'about' %}">
+              <span class="nav-icon">ℹ️</span> About Us
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link {% if request.resolver_match.url_name == 'gallery' %}active{% endif %}" 
+               href="{% url 'gallery' %}">
+              <span class="nav-icon">🖼️</span> Gallery
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- MAIN CONTENT -->
+  <div class="main-content">
+    {% block content %}{% endblock %}
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container text-center">
+      <p class="mb-0">&copy; 2025 To-Focus App. Made with ❤️</p>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS -->
+  <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+
+  <script>
+    // Smooth scroll behavior
+    document.documentElement.style.scrollBehavior = 'smooth';
+
+    // Auto-close mobile menu when clicking a link
+    document.querySelectorAll('.navbar-nav .nav-link').forEach(link => {
+      link.addEventListener('click', () => {
+        const navbarCollapse = document.querySelector('.navbar-collapse');
+        if (navbarCollapse.classList.contains('show')) {
+          const bsCollapse = new bootstrap.Collapse(navbarCollapse);
+          bsCollapse.hide();
+        }
+      });
+    });
+  </script>
+</body>
+
+</html>

@@ -185,3 +185,4 @@ def add_task_ajax(request, note_id):
                 "status": "success"
             })
     return JsonResponse({"status": "error"}, status=400)
+

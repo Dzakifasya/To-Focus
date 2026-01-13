@@ -26,7 +26,6 @@
 
 html {
     scroll-behavior: smooth;
-    overflow-x: hidden;
 }
 
 body {
@@ -35,210 +34,6 @@ body {
     min-height: 100vh;
     color: var(--text-dark);
     line-height: 1.6;
-    overflow-x: hidden;
-}
-
-/* ============================================
-   ELEGANT NAVBAR STYLES - FIXED VERSION
-   ============================================ */
-.navbar-custom {
-    background: linear-gradient(135deg,
-            rgba(2, 90, 170, 0.95) 0%,
-            rgba(3, 112, 201, 0.95) 50%,
-            rgba(1, 64, 128, 0.95) 100%);
-    backdrop-filter: blur(12px) saturate(180%);
-    padding: 0 !important;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
-    box-shadow: 0 4px 16px rgba(2, 90, 170, 0.2);
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    transition: all 0.3s ease;
-    height: 72px;
-    display: flex;
-    align-items: center;
-}
-
-.container.text-center {
-    text-align: center;
-}
-
-.navbar-custom .page-container {
-    max-width: 1400px;
-    width: 100%;
-    margin: 0 auto;
-    padding: 0 1.5rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    height: 100%;
-}
-
-.navbar-custom .navbar-brand {
-    font-weight: 700;
-    font-size: 1.5rem;
-    display: flex;
-    align-items: center;
-    text-decoration: none;
-    padding: 0;
-    margin: 0;
-}
-
-.navbar-brand img {
-    width: 32px;
-    height: 32px;
-    margin-right: 10px;
-    border-radius: 10px;
-    box-shadow: 0 2px 8px rgba(255, 255, 255, 0.2);
-}
-
-.brand-text {
-    color: #ffffff;
-    font-weight: 700;
-}
-
-.navbar-custom .navbar-collapse {
-    display: flex !important;
-    flex-grow: 0;
-    height: 100%;
-    align-items: center;
-}
-
-.navbar-custom .navbar-nav {
-    height: 100%;
-    display: flex;
-    align-items: center;
-    margin: 0 !important;
-    padding: 0 !important;
-    list-style: none !important;
-    flex-direction: row;
-    gap: 0.5rem;
-}
-
-.navbar-custom .nav-item {
-    margin: 0;
-    padding: 0;
-    height: 42px;
-    display: flex;
-    align-items: center;
-}
-
-.navbar-custom .nav-link {
-    color: rgba(255, 255, 255, 0.9) !important;
-    font-weight: 500;
-    font-size: 0.9rem;
-    padding: 0 1.2rem !important;
-    border-radius: 10px;
-    transition: all 0.3s ease;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    height: 42px;
-    display: flex;
-    align-items: center;
-    white-space: nowrap;
-    text-decoration: none;
-}
-
-.navbar-custom .nav-link:hover {
-    background: rgba(255, 255, 255, 0.15);
-    border-color: rgba(255, 255, 255, 0.3);
-    transform: translateY(-1px);
-}
-
-.nav-link.active {
-    background: rgba(255, 255, 255, 0.2);
-    color: #ffd966 !important;
-    border-color: rgba(255, 255, 255, 0.4);
-    font-weight: 600;
-}
-
-/* Hide hamburger menu on desktop */
-.navbar-toggler {
-    display: none !important;
-}
-
-/* Mobile Responsive */
-@media (max-width: 991px) {
-    .navbar-custom {
-        height: auto;
-        min-height: 72px;
-    }
-
-    .navbar-toggler {
-        display: block !important;
-        border: none;
-        padding: 0.5rem;
-    }
-
-    .navbar-toggler-icon {
-        filter: invert(1);
-    }
-
-    .navbar-custom .navbar-collapse {
-        flex-direction: column;
-        align-items: flex-start;
-        height: auto;
-        width: 100%;
-        background: rgba(1, 64, 128, 0.98);
-        padding: 1rem;
-        border-radius: 10px;
-        margin-top: 1rem;
-    }
-
-    .navbar-custom .navbar-nav {
-        flex-direction: column;
-        width: 100%;
-        gap: 0.5rem;
-        height: auto;
-    }
-
-    .navbar-custom .nav-item {
-        width: 100%;
-        height: auto;
-    }
-
-    .navbar-custom .nav-link {
-        width: 100%;
-        justify-content: flex-start;
-    }
-}
-
-
-
-/* ============================================
-   MAIN CONTENT
-   ============================================ */
-.main-content {
-    max-width: 1400px;
-    margin: 2rem auto;
-    padding: 0 1rem;
-    animation: fadeInUp 0.6s ease;
-}
-
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-
-.page-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 1.5rem;
-}
-
-.container h1 {
-    color: var(--primary-blue);
-    font-weight: 700;
-    font-size: 2rem;
-    margin-bottom: 1.5rem;
-    text-align: center;
 }
 
 /* ============================================
@@ -261,8 +56,6 @@ body {
         column-count: 3;
     }
 }
-
-
 
 @media (min-width: 1500px) {
     .notes-container {
@@ -377,7 +170,7 @@ form[action*="edit_note"] input[type="text"]:focus {
 }
 
 /* ============================================
-   BUTTONS (TANPA EFEK HOVER DI ACTION BUTTONS)
+   BUTTONS
    ============================================ */
 button {
     padding: 0.5rem 1rem;
@@ -393,7 +186,7 @@ button {
     gap: 0.4rem;
 }
 
-/* Button Tambah Todolist (yang utama) */
+/* Button Tambah Todolist */
 button[type="submit"]:not(.toggle-completed) {
     background: linear-gradient(135deg, var(--primary-blue) 0%, var(--secondary-blue) 100%);
     color: var(--white);
@@ -405,76 +198,58 @@ button[type="submit"]:not(.toggle-completed):hover {
     box-shadow: 0 4px 12px rgba(2, 90, 170, 0.35);
 }
 
-/* DELETE TASK BUTTON (❌) - TANPA EFEK */
+/* DELETE TASK BUTTON */
 form[action*="delete_task"] button {
     background: transparent;
     color: var(--danger-red);
     font-size: 1.1rem;
     padding: 0.35rem 0.6rem;
     border-radius: 6px;
-    transition: none;
-    /* HAPUS TRANSISI */
 }
 
-form[action*="delete_task"] button:hover {
-    /* HAPUS SEMUA EFEK HOVER */
-    background: transparent;
-    transform: none;
-}
-
-/* PIN BUTTON - TANPA EFEK */
+/* PIN BUTTON */
 form[action*="pin"] button {
     background: var(--white);
     color: var(--primary-blue);
     border: 1.5px solid var(--primary-blue);
     font-size: 0.8rem;
     padding: 0.4rem 0.8rem;
-    transition: none;
-    /* HAPUS TRANSISI */
 }
 
-form[action*="pin"] button:hover {
-    /* HAPUS SEMUA EFEK HOVER */
-    background: var(--white);
-    color: var(--primary-blue);
-    transform: none;
-}
-
-/* DELETE TODOLIST BUTTON (🗑️) - TANPA EFEK */
+/* DELETE TODOLIST BUTTON */
 form[action*="delete_todolist"] button {
     background: transparent;
     color: var(--danger-red);
     font-size: 1.1rem;
     padding: 0.35rem 0.6rem;
     border-radius: 6px;
-    transition: none;
-    /* HAPUS TRANSISI */
-}
-
-form[action*="delete_todolist"] button:hover {
-    /* HAPUS SEMUA EFEK HOVER */
-    background: transparent;
-    transform: none;
 }
 
 /* ============================================
    TASK LISTS
    ============================================ */
-.notes-container ul {
+ul {
     list-style: none;
     padding: 0;
     margin-top: 0.75rem;
 }
 
-.notes-container li {
+li {
     display: flex;
     align-items: center;
     gap: 0.5rem;
     margin-bottom: 0.5rem;
+    padding: 0.5rem;
+    background: transparent;
+    border-radius: 6px;
+    border: 1px solid transparent;
+    transition: all 0.2s ease;
+    animation: slideIn 0.3s ease;
 }
 
-.notes-container li:hover {
-    background: var(--light-blue);
+li:hover {
+    background: var(--light-gray);
+    border-color: var(--border-gray);
 }
 
 .task-input {
@@ -627,22 +402,7 @@ input[type="checkbox"]:hover {
     margin: 0;
     text-align: center;
     font-size: 1.75rem;
-}
-
-/* ============================================
-   FOOTER
-   ============================================ */
-.footer {
-    background: linear-gradient(135deg, var(--primary-blue) 0%, var(--secondary-blue) 100%);
-    color: var(--white);
-    padding: 1.5rem 0;
-    margin-top: 3rem;
-    box-shadow: 0 -4px 16px rgba(2, 90, 170, 0.2);
-}
-
-.footer p {
-    font-size: 0.9rem;
-    opacity: 0.9;
+    color: var(--primary-blue);
 }
 
 /* ============================================
@@ -653,15 +413,10 @@ input[type="checkbox"]:hover {
         opacity: 0;
         transform: translateX(-10px);
     }
-
     to {
         opacity: 1;
         transform: translateX(0);
     }
-}
-
-li {
-    animation: slideIn 0.3s ease;
 }
 
 /* ============================================
@@ -703,39 +458,16 @@ li {
    RESPONSIVE
    ============================================ */
 @media (max-width: 768px) {
-    .main-content {
-        padding: 0 0.75rem;
-    }
-
-    .container {
-        padding: 0 0.75rem;
-    }
-
     .card,
     .input-card {
         padding: 1rem;
     }
 
-    .container h1,
     .app-header h1 {
         font-size: 1.5rem;
     }
 
-    /* BUTTON SIMPLE - NO HOVER COLOR CHANGE */
-    button:hover {
-        transform: none !important;
-        background: inherit !important;
-        opacity: 0.85;
-    }
-
-    .btn-delete-task:hover,
-    .btn-delete-note:hover,
-    .btn-pin-note:hover {
-        transform: none !important;
-        opacity: 0.8;
-    }
-
-    /* Remove excessive animations */
+    /* Remove excessive animations on mobile */
     .card:hover {
         transform: none;
     }
@@ -744,164 +476,41 @@ li {
         background: transparent;
     }
 
-    body {
-        display: flex;
-        flex-direction: column;
-        min-height: 100vh;
-    }
-
-    .main-content {
-        flex: 1;
-        min-height: calc(100vh - 200px);
-        /* Navbar + Footer height */
-    }
-
-    .footer {
-        margin-top: auto;
-    }
-
-    .navbar-custom .container {
-        max-width: 1400px;
-        margin: 0 auto;
-        padding: 0 1.5rem;
-    }
-
-    .main-content {
-        max-width: 1400px;
-        margin: 2rem auto;
-        padding: 0 1.5rem;
-    }
-
-    .footer .container {
-        max-width: 1400px;
-    }
-
-    /* ============================================
-   TASK INPUT & TEXT WRAPPING
-   ============================================ */
+    /* Task input wrapping */
     .task-input {
         flex: 1;
         min-width: 0;
-        /* Penting untuk text wrapping */
     }
 
     .task-input input[type="text"] {
-        margin-top: 0;
-        border: none;
-        background: transparent;
-        padding: 0.25rem 0;
-        font-size: 0.9rem;
-        width: 100%;
         word-wrap: break-word;
         white-space: pre-wrap;
-        /* Agar teks panjang turun ke bawah */
         overflow-wrap: break-word;
     }
 
     .task-input input[type="text"]:focus {
-        background: var(--white);
-        border-radius: 4px;
-        padding: 0.25rem 0.5rem;
         outline: 2px solid var(--primary-blue);
     }
 
-    /* Sembunyikan tombol delete secara default */
+    /* Hide delete button by default on mobile */
     .btn-delete-task {
         display: none;
-        background: transparent;
-        color: var(--danger-red);
-        font-size: 1.1rem;
-        padding: 0.35rem 0.6rem;
-        border-radius: 6px;
-        transition: opacity 0.2s ease;
     }
 
-    /* Tampilkan tombol delete hanya saat input dalam mode focus/edit */
-    .task-input input[type="text"]:focus~.form-delete-task .btn-delete-task,
+    .task-input input[type="text"]:focus ~ .form-delete-task .btn-delete-task,
     li.editing .btn-delete-task {
         display: inline-flex;
     }
 
-    /* Update li untuk flex wrapping */
+    /* Flex wrapping for tasks */
     li {
-        display: flex;
         align-items: flex-start;
-        /* Ubah dari center ke flex-start */
-        gap: 0.5rem;
-        margin-bottom: 0.5rem;
-        padding: 0.5rem;
-        background: transparent;
-        border-radius: 6px;
-        border: 1px solid transparent;
-        transition: all 0.2s ease;
         flex-wrap: wrap;
-        /* Izinkan wrapping */
     }
 
-    /* Pastikan task input mengambil ruang yang cukup */
     li .task-input {
         flex: 1 1 auto;
         min-width: 150px;
         max-width: 100%;
     }
-    /* Grid untuk section Brand Assets */
-.assets-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 16px;
-}
-.asset-card {
-    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-    padding: 18px;
-    border-radius: 12px;
-    text-align: center;
-    border: 1px solid rgba(2, 90, 170, 0.1);
-    box-shadow: 0 6px 16px rgba(2, 90, 170, 0.1);
-}
-.asset-card .thumb {
-    background: white;
-    padding: 16px;
-    border-radius: 12px;
-    margin-bottom: 12px;
-    display: inline-block;
-    box-shadow: 0 6px 16px rgba(2, 90, 170, 0.1);
-}
-.asset-card h3 {
-    color: var(--primary-blue);
-    font-weight: 600;
-    margin-bottom: 6px;
-    font-size: 1rem;
-}
-.asset-card p {
-    color: var(--text-gray);
-    font-size: 0.88rem;
-    margin-bottom: 10px;
-}
-.asset-tags {
-    display: flex;
-    gap: 6px;
-    justify-content: center;
-}
-.asset-tags span {
-    background: rgba(2, 90, 170, 0.1);
-    color: var(--primary-blue);
-    padding: 6px 10px;
-    border-radius: 12px;
-    font-size: 0.72rem;
-    font-weight: 600;
-}
-
-/* FORCE DESKTOP NAVBAR HORIZONTAL */
-@media (min-width: 992px) {
-    .navbar-nav {
-        flex-direction: row !important;
-        align-items: center !important;
-    }
-
-    .nav-item {
-        width: auto !important;
-    }
-}
-
-
 }

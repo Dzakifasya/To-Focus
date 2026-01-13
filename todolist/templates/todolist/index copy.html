@@ -1,0 +1,584 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Home - Todolist App{% endblock %}
+
+{% block content %}
+<div class="container">
+    <!-- APP HEADER -->
+    <div class="app-header">
+        <img src="{% static 'todolist/img/logo.png' %}" alt="Logo Todolist">
+        <h1>To-Focus</h1>
+    </div>
+
+    <!-- FORM TAMBAH TODOLIST BARU -->
+    <div class="input-card">
+        <form method="POST" id="form-create-todolist">
+            {% csrf_token %}
+            <label for="todolist-title"
+                style="color: var(--primary-blue); font-weight: 600; display: block; margin-bottom: 0.5rem;">
+                Buat Todolist Baru
+            </label>
+            <input type="text" id="todolist-title" name="title" placeholder="Masukan judul todolist....." required>
+            <br>
+            <button type="submit" style="margin-top: 1rem;">Tambah Todolist</button>
+        </form>
+    </div>
+
+    <!-- PINNED NOTES -->
+    {% if pinned_notes %}
+    <div style="margin-bottom: 1.5rem;">
+        <h5
+            style="color: var(--text-gray); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 1rem; font-weight: 600;">
+            📌 Disematkan
+        </h5>
+        <div class="notes-container">
+            {% for note in pinned_notes %}
+            <div class="card pinned" data-note-id="{{ note.id }}">
+
+                <!-- EDIT JUDUL NOTE -->
+                <form method="POST" action="{% url 'edit_note' note.id %}" class="form-edit-note">
+                    {% csrf_token %}
+                    <input type="text" name="title" value="{{ note.title }}" class="note-title-input">
+                </form>
+
+                <!-- FORM TAMBAH TASK -->
+                <form method="POST" action="{% url 'add_task' note.id %}" class="form-add-task">
+                    {% csrf_token %}
+                    <input type="text" name="task_title" placeholder="Masukan task baru..." required>
+                </form>
+
+                <!-- ACTIVE TASKS -->
+                <ul class="task-list" data-note-id="{{ note.id }}">
+                    {% for task in note.active_tasks %}
+                    <li data-task-id="{{ task.id }}">
+                        <span class="drag-handle">⋮⋮</span>
+
+                        <form method="POST" action="{% url 'toggle_task' task.id %}" class="form-toggle-task">
+                            {% csrf_token %}
+                            <input type="checkbox" {% if task.completed %}checked{% endif %} class="task-checkbox">
+                        </form>
+
+                        <form method="POST" action="{% url 'edit_task' task.id %}" class="task-input form-edit-task">
+                            {% csrf_token %}
+                            <input type="text" name="title" value="{{ task.title }}">
+                        </form>
+
+                        <form method="POST" action="{% url 'delete_task' task.id %}" class="form-delete-task">
+                            {% csrf_token %}
+                            <button type="button" class="btn-delete-task">❌</button>
+                        </form>
+                    </li>
+                    {% endfor %}
+                </ul>
+
+                <!-- COMPLETED TASKS -->
+                {% if note.completed_count > 0 %}
+                <div class="completed-wrapper">
+                    <button type="button" class="toggle-completed">
+                        <span class="arrow">▼</span>
+                        <span>✅ {{ note.completed_count }} task selesai</span>
+                    </button>
+
+                    <ul class="completed-list" style="display:none;">
+                        {% for task in note.completed_tasks %}
+                        <li data-task-id="{{ task.id }}">
+                            <form method="POST" action="{% url 'toggle_task' task.id %}" class="form-toggle-task">
+                                {% csrf_token %}
+                                <input type="checkbox" checked class="task-checkbox">
+                            </form>
+
+                            <form method="POST" action="{% url 'edit_task' task.id %}"
+                                class="task-input form-edit-task">
+                                {% csrf_token %}
+                                <input type="text" name="title" value="{{ task.title }}" class="done">
+                            </form>
+
+                            <form method="POST" action="{% url 'delete_task' task.id %}" class="form-delete-task">
+                                {% csrf_token %}
+                                <button type="button" class="btn-delete-task">❌</button>
+                            </form>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                {% endif %}
+
+                <!-- WAKTU EDIT -->
+                <small class="edited-time">
+                    🕐 Diedit {% if note.show_time %}{{ note.updated_at|date:"H.i" }}{% else %}{{
+                    note.updated_at|date:"d M Y" }}{% endif %}
+                </small>
+
+                <!-- ACTION BUTTONS -->
+                <div class="note-actions">
+                    <form method="POST" action="{% url 'pin_todolist' note.id %}" class="form-pin-note">
+                        {% csrf_token %}
+                        <button type="button" class="btn-pin-note">Unpin</button>
+                    </form>
+
+                    <form method="POST" action="{% url 'delete_todolist' note.id %}" class="form-delete-note">
+                        {% csrf_token %}
+                        <button type="button" class="btn-delete-note">🗑️ Hapus</button>
+                    </form>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    {% endif %}
+
+    <!-- SEPARATOR -->
+    {% if pinned_notes and unpinned_notes %}
+    <div style="border-top: 2px solid var(--border-gray); margin: 2rem 0;"></div>
+    {% endif %}
+
+    <!-- UNPINNED NOTES -->
+    {% if unpinned_notes %}
+    <div>
+        {% if pinned_notes %}
+        <h5
+            style="color: var(--text-gray); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 1rem; font-weight: 600;">
+            📋 Lainnya
+        </h5>
+        {% endif %}
+        <div class="notes-container">
+            {% for note in unpinned_notes %}
+            <div class="card" data-note-id="{{ note.id }}">
+
+                <!-- EDIT JUDUL NOTE -->
+                <form method="POST" action="{% url 'edit_note' note.id %}" class="form-edit-note">
+                    {% csrf_token %}
+                    <input type="text" name="title" value="{{ note.title }}" class="note-title-input">
+                </form>
+
+                <!-- FORM TAMBAH TASK -->
+                <form method="POST" action="{% url 'add_task' note.id %}" class="form-add-task">
+                    {% csrf_token %}
+                    <input type="text" name="task_title" placeholder="Masukan task baru..." required>
+                </form>
+
+                <!-- ACTIVE TASKS -->
+                <ul class="task-list" data-note-id="{{ note.id }}">
+                    {% for task in note.active_tasks %}
+                    <li data-task-id="{{ task.id }}">
+                        <span class="drag-handle">⋮⋮</span>
+
+                        <form method="POST" action="{% url 'toggle_task' task.id %}" class="form-toggle-task">
+                            {% csrf_token %}
+                            <input type="checkbox" class="task-checkbox">
+                        </form>
+
+                        <form method="POST" action="{% url 'edit_task' task.id %}" class="task-input form-edit-task">
+                            {% csrf_token %}
+                            <input type="text" name="title" value="{{ task.title }}">
+                        </form>
+
+                        <form method="POST" action="{% url 'delete_task' task.id %}" class="form-delete-task">
+                            {% csrf_token %}
+                            <button type="button" class="btn-delete-task">❌</button>
+                        </form>
+                    </li>
+                    {% endfor %}
+                </ul>
+
+                <!-- COMPLETED TASKS -->
+                {% if note.completed_count > 0 %}
+                <div class="completed-wrapper">
+                    <button type="button" class="toggle-completed">
+                        <span class="arrow">▼</span>
+                        <span>✅ {{ note.completed_count }} task selesai</span>
+                    </button>
+
+                    <ul class="completed-list" style="display:none;">
+                        {% for task in note.completed_tasks %}
+                        <li data-task-id="{{ task.id }}">
+                            <form method="POST" action="{% url 'toggle_task' task.id %}" class="form-toggle-task">
+                                {% csrf_token %}
+                                <input type="checkbox" checked class="task-checkbox">
+                            </form>
+
+                            <form method="POST" action="{% url 'edit_task' task.id %}"
+                                class="task-input form-edit-task">
+                                {% csrf_token %}
+                                <input type="text" name="title" value="{{ task.title }}" class="done">
+                            </form>
+
+                            <form method="POST" action="{% url 'delete_task' task.id %}" class="form-delete-task">
+                                {% csrf_token %}
+                                <button type="button" class="btn-delete-task">❌</button>
+                            </form>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                {% endif %}
+
+                <!-- WAKTU EDIT -->
+                <small class="edited-time">
+                    🕐 Diedit {% if note.show_time %}{{ note.updated_at|date:"H.i" }}{% else %}{{
+                    note.updated_at|date:"d M Y" }}{% endif %}
+                </small>
+
+                <!-- ACTION BUTTONS -->
+                <div class="note-actions">
+                    <form method="POST" action="{% url 'pin_todolist' note.id %}" class="form-pin-note">
+                        {% csrf_token %}
+                        <button type="button" class="btn-pin-note">📌 Pin</button>
+                    </form>
+
+                    <form method="POST" action="{% url 'delete_todolist' note.id %}" class="form-delete-note">
+                        {% csrf_token %}
+                        <button type="button" class="btn-delete-note">🗑️ Hapus</button>
+                    </form>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    {% endif %}
+
+    <!-- EMPTY STATE -->
+    {% if not pinned_notes and not unpinned_notes %}
+    <div class="card empty-card">
+        <div style="font-size: 4rem; margin-bottom: 1rem;">📋</div>
+        <h3>Belum ada todolist</h3>
+        <p>Mulai dengan membuat todolist pertama Anda! 🚀</p>
+    </div>
+    {% endif %}
+</div>
+
+
+
+
+
+<!-- SORTABLE.JS -->
+<script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.0/Sortable.min.js"></script>
+
+<script>
+    // ==================== HELPER FUNCTIONS ====================
+    const csrfToken = '{{ csrf_token }}';
+
+    function fetchAjax(url, method = 'POST', body = null) {
+        const options = {
+            method: method,
+            headers: { 'X-CSRFToken': csrfToken }
+        };
+        if (body) options.body = body;
+        return fetch(url, options).then(res => res.json());
+    }
+
+    // ==================== UPDATE TIMESTAMP ====================
+    function updateTimestamp(card) {
+        const now = new Date();
+        const timeStr = now.getHours().toString().padStart(2, '0') + '.' +
+            now.getMinutes().toString().padStart(2, '0');
+
+        const editedTime = card.querySelector('.edited-time');
+        if (editedTime) {
+            editedTime.innerHTML = `🕐 Diedit ${timeStr}`;
+        }
+    }
+
+    // ==================== DRAG & DROP ====================
+    document.addEventListener('DOMContentLoaded', function () {
+        document.querySelectorAll('.task-list').forEach(list => {
+            new Sortable(list, {
+                handle: '.drag-handle',
+                animation: 150,
+                ghostClass: 'sortable-ghost',
+                filter: 'input, button, form',
+                preventOnFilter: false,
+                onEnd: function () {
+                    const order = Array.from(list.children)
+                        .filter(li => li.dataset.taskId)
+                        .map(li => li.dataset.taskId);
+
+                    fetchAjax("{% url 'reorder_tasks' %}", 'POST', JSON.stringify({ order }))
+                        .then(data => {
+                            if (data.success) {
+                                const card = list.closest('.card');
+                                updateTimestamp(card);
+                            }
+                        });
+                }
+            });
+        });
+    });
+
+    // ==================== ADD TASK ====================
+    document.querySelectorAll('.form-add-task').forEach(form => {
+        const input = form.querySelector('input[name="task_title"]');
+
+        input.addEventListener('keydown', function (e) {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+
+                const title = this.value.trim();
+                if (!title) return;
+
+                const card = form.closest('.card');
+
+                fetchAjax(form.action, 'POST', new FormData(form))
+                    .then(data => {
+                        if (data.success) {
+                            const taskList = form.nextElementSibling;
+                            const li = document.createElement('li');
+                            li.dataset.taskId = data.task_id;
+                            li.innerHTML = `
+                            <span class="drag-handle">⋮⋮</span>
+                            <form method="POST" action="/todolist/task/toggle/${data.task_id}/" class="form-toggle-task">
+                                <input type="hidden" name="csrfmiddlewaretoken" value="${csrfToken}">
+                                <input type="checkbox" class="task-checkbox">
+                            </form>
+                            <form method="POST" action="/todolist/task/edit/${data.task_id}/" class="task-input form-edit-task">
+                                <input type="hidden" name="csrfmiddlewaretoken" value="${csrfToken}">
+                                <input type="text" name="title" value="${data.task_title}">
+                            </form>
+                            <form method="POST" action="/todolist/task/delete/${data.task_id}/" class="form-delete-task">
+                                <input type="hidden" name="csrfmiddlewaretoken" value="${csrfToken}">
+                                <button type="button" class="btn-delete-task">❌</button>
+                            </form>
+                        `;
+                            taskList.appendChild(li);
+                            input.value = '';
+                            updateTimestamp(card);
+                            attachTaskEvents();
+                        }
+                    });
+            }
+        });
+    });
+
+    // ==================== TOGGLE TASK ====================
+    function attachToggleEvents() {
+        document.querySelectorAll('.task-checkbox').forEach(checkbox => {
+            const clone = checkbox.cloneNode(true);
+            checkbox.replaceWith(clone);
+
+            clone.addEventListener('change', function () {
+                const form = this.closest('.form-toggle-task');
+                const li = this.closest('li');
+                const card = this.closest('.card');
+                const taskInput = li.querySelector('.task-input input');
+
+                fetchAjax(form.action)
+                    .then(data => {
+                        if (data.success) {
+                            updateTimestamp(card);
+
+                            // Update visual state
+                            if (data.completed) {
+                                taskInput.classList.add('done');
+
+                                // Pindahkan ke completed list setelah delay
+                                setTimeout(() => {
+                                    const completedWrapper = card.querySelector('.completed-wrapper');
+
+                                    if (completedWrapper) {
+                                        // Ada completed wrapper, pindahkan ke sana
+                                        const completedList = completedWrapper.querySelector('.completed-list');
+                                        completedList.appendChild(li);
+
+                                        // Update counter
+                                        const counter = completedWrapper.querySelector('.toggle-completed span:last-child');
+                                        const currentCount = parseInt(counter.textContent.match(/\d+/)[0]) || 0;
+                                        counter.textContent = `✅ ${currentCount + 1} task selesai`;
+                                    } else {
+                                        // Belum ada wrapper, buat baru
+                                        const taskList = card.querySelector('.task-list');
+
+                                        const newWrapper = document.createElement('div');
+                                        newWrapper.className = 'completed-wrapper';
+                                        newWrapper.innerHTML = `
+                                        <button type="button" class="toggle-completed">
+                                            <span class="arrow">▼</span>
+                                            <span>✅ 1 task selesai</span>
+                                        </button>
+                                        <ul class="completed-list" style="display:none;"></ul>
+                                    `;
+
+                                        taskList.after(newWrapper);
+                                        newWrapper.querySelector('.completed-list').appendChild(li);
+
+                                        // Re-attach toggle event
+                                        attachCompletedToggle();
+                                    }
+
+                                    // Re-attach events
+                                    attachTaskEvents();
+                                }, 300);
+                            } else {
+                                // Unchecked - pindah ke active
+                                taskInput.classList.remove('done');
+
+                                setTimeout(() => {
+                                    const taskList = card.querySelector('.task-list');
+                                    taskList.appendChild(li);
+
+                                    // Update atau hapus completed counter
+                                    const completedWrapper = card.querySelector('.completed-wrapper');
+                                    if (completedWrapper) {
+                                        const completedList = completedWrapper.querySelector('.completed-list');
+                                        const counter = completedWrapper.querySelector('.toggle-completed span:last-child');
+                                        const currentCount = completedList.children.length;
+
+                                        if (currentCount === 0) {
+                                            completedWrapper.remove();
+                                        } else {
+                                            counter.textContent = `✅ ${currentCount} task selesai`;
+                                        }
+                                    }
+
+                                    // Re-attach events
+                                    attachTaskEvents();
+                                }, 300);
+                            }
+                        }
+                    });
+            });
+        });
+    }
+
+    // ==================== EDIT TASK ====================
+    function attachEditEvents() {
+        document.querySelectorAll('.form-edit-task input[type="text"]').forEach(input => {
+            const clone = input.cloneNode(true);
+            input.replaceWith(clone);
+
+            clone.addEventListener('blur', function (e) {
+                e.preventDefault();
+                const form = this.closest('.form-edit-task');
+                const card = this.closest('.card');
+
+                fetchAjax(form.action, 'POST', new FormData(form))
+                    .then(data => {
+                        if (data.success) {
+                            updateTimestamp(card);
+                        }
+                    });
+            });
+
+            // Prevent form submit on Enter
+            clone.addEventListener('keydown', function (e) {
+                if (e.key === 'Enter') {
+                    e.preventDefault();
+                    this.blur(); // Trigger blur event
+                }
+            });
+        });
+    }
+
+    // ==================== DELETE TASK ====================
+    function attachDeleteEvents() {
+        document.querySelectorAll('.btn-delete-task').forEach(btn => {
+            const clone = btn.cloneNode(true);
+            btn.replaceWith(clone);
+
+            clone.addEventListener('click', function () {
+                const form = this.closest('.form-delete-task');
+                const li = this.closest('li');
+                const card = this.closest('.card');
+
+                fetchAjax(form.action)
+                    .then(data => {
+                        if (data.success) {
+                            updateTimestamp(card);
+                            li.style.transition = 'opacity 0.3s ease';
+                            li.style.opacity = '0';
+                            setTimeout(() => li.remove(), 300);
+                        }
+                    });
+            });
+        });
+    }
+
+    // ==================== EDIT NOTE TITLE ====================
+    document.querySelectorAll('.form-edit-note input').forEach(input => {
+        input.addEventListener('blur', function (e) {
+            e.preventDefault();
+            const form = this.closest('.form-edit-note');
+            const card = this.closest('.card');
+
+            fetchAjax(form.action, 'POST', new FormData(form))
+                .then(data => {
+                    if (data.success) {
+                        updateTimestamp(card);
+                    }
+                });
+        });
+
+        // Prevent form submit on Enter
+        input.addEventListener('keydown', function (e) {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                this.blur(); // Trigger blur event
+            }
+        });
+    });
+
+    // ==================== PIN/UNPIN NOTE ====================
+    document.querySelectorAll('.btn-pin-note').forEach(btn => {
+        btn.addEventListener('click', function () {
+            const form = this.closest('.form-pin-note');
+            fetchAjax(form.action).then(() => location.reload());
+        });
+    });
+
+    // ==================== DELETE NOTE ====================
+    document.querySelectorAll('.btn-delete-note').forEach(btn => {
+        btn.addEventListener('click', function () {
+            const form = this.closest('.form-delete-note');
+            const card = this.closest('.card');
+
+            fetchAjax(form.action)
+                .then(data => {
+                    if (data.success) {
+                        card.style.transition = 'opacity 0.3s ease';
+                        card.style.opacity = '0';
+                        setTimeout(() => card.remove(), 300);
+                    }
+                });
+        });
+    });
+
+    // ==================== TOGGLE COMPLETED ====================
+    function attachCompletedToggle() {
+        document.querySelectorAll('.toggle-completed').forEach((btn, index) => {
+            // Remove old listener
+            const clone = btn.cloneNode(true);
+            btn.replaceWith(clone);
+
+            const list = clone.nextElementSibling;
+            const arrow = clone.querySelector('.arrow');
+            const key = `completed_${clone.closest('.card').dataset.noteId}`;
+
+            if (localStorage.getItem(key) === 'true') {
+                list.style.display = 'block';
+                arrow.textContent = '▲';
+            }
+
+            clone.addEventListener('click', function () {
+                const isOpen = list.style.display === 'block';
+                list.style.display = isOpen ? 'none' : 'block';
+                arrow.textContent = isOpen ? '▼' : '▲';
+                localStorage.setItem(key, !isOpen);
+            });
+        });
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+        attachCompletedToggle();
+    });
+
+    // ==================== RE-ATTACH EVENTS ====================
+    function attachTaskEvents() {
+        attachToggleEvents();
+        attachEditEvents();
+        attachDeleteEvents();
+    }
+
+    document.addEventListener('DOMContentLoaded', attachTaskEvents);
+</script>
+
+{% endblock %}

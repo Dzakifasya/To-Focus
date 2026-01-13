@@ -8,59 +8,59 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
 
   <!-- Bootstrap -->
   <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
 
   <!-- Custom CSS -->
   <link rel="stylesheet" href="{% static 'todolist/css/style.css' %}">
-
-  <!-- Additional Google Fonts -->
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@600;700&display=swap"
-    rel="stylesheet">
 </head>
 
 <body>
 
 <!-- NAVBAR -->
-<nav class="navbar navbar-expand-lg navbar-custom shadow-sm">
-  <div class="container d-flex align-items-center" style="max-width: 1400px;">
-    <a class="navbar-brand d-flex align-items-center" href="{% url 'home' %}">
-      <img src="{% static 'todolist/img/logo.png' %}" alt="Logo"
-        style="width: 36px; height: 36px; margin-right: 12px;">
+<nav class="navbar navbar-expand-lg navbar-custom">
+  <div class="page-container">
+    
+    <!-- BRAND -->
+    <a class="navbar-brand" href="{% url 'home' %}">
+      <img src="{% static 'todolist/img/logo.png' %}" alt="Logo">
       <span class="brand-text">To-Focus</span>
     </a>
 
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
+    <!-- Hamburger Toggle (Mobile) -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    <div class="collapse navbar-collapse d-flex align-items-center" id="navbarSupportedContent">
-      <ul class="navbar-nav ms-auto mb-0 d-flex align-items-center">
+    <!-- MENU -->
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
         <li class="nav-item">
           <a class="nav-link {% if request.resolver_match.url_name == 'home' %}active{% endif %}"
             href="{% url 'home' %}">
-            <span class="nav-icon">🏠</span> Home
+            🏠 Home
           </a>
         </li>
         <li class="nav-item">
           <a class="nav-link {% if request.resolver_match.url_name == 'about' %}active{% endif %}"
             href="{% url 'about' %}">
-            <span class="nav-icon">ℹ️</span> About Us
+            ℹ️ About Us
           </a>
         </li>
         <li class="nav-item">
           <a class="nav-link {% if request.resolver_match.url_name == 'gallery' %}active{% endif %}"
             href="{% url 'gallery' %}">
-            <span class="nav-icon">🖼️</span> Gallery
+            🖼️ Gallery
           </a>
         </li>
       </ul>
     </div>
+
   </div>
 </nav>
+
 
   <!-- CONTENT -->
   <div class="main-content">
@@ -75,7 +75,7 @@
   </footer>
 
   <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
-  <!-- Tambahkan script ini sebelum closing tag </body> di base.html -->
+  
   <script>
     // Fix scroll position on page load
     if ('scrollRestoration' in history) {
